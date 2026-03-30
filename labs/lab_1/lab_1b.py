@@ -26,6 +26,23 @@ def check_num_input() -> float:
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+def check_operation_input() -> str:
+    """
+    Function to check if the user input for the operation is valid. It ensures that the operation is one of the
+    allowed operations.
+
+    Returns:
+        str: The valid operation input by the user.
+    """
+    valid_operations = {"add", "subtract", "multiply", "divide"}
+
+    while True:
+        operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
+        if operation in valid_operations:
+            return operation
+        else:
+            print("Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'.")
+
 def simple_calculator(operation: str, num1: float, num2: float) -> float:
     """
     Function that takes in two numbers and an operation (add, subtract, multiply, divide),
@@ -63,7 +80,7 @@ def main():
     num1 = check_num_input()
     print("Enter the second number: ", end="")
     num2 = check_num_input()
-    operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
+    operation = check_operation_input()
 
     # Perform the calculation and display the result
     result = simple_calculator(operation, num1, num2)
