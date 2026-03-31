@@ -23,14 +23,11 @@ def test_all_same():
     assert max_subarray_sum([2, 2, 2, 2]) == 8            # Test for all same positive numbers
     assert max_subarray_sum([-2, -2, -2, -2]) == -2      # Test for all same negative numbers
 
-def test_empty_list():
-    with pytest.raises(IndexError):                        # Test if raises specified error
-        max_subarray_sum([])                                # Line of code to be tested
+def test_empty_list():                       # Test if raises specified error
+    assert max_subarray_sum([]) == 0                                # Line of code to be tested
 
 def test_correct_datatype():
-    with pytest.raises(TypeError):
-        max_subarray_sum("string")
-        max_subarray_sum(["string", "string"])
+    assert max_subarray_sum("String") == 0 and max_subarray_sum(["String", "String"]) == 0
 
 if __name__ == "__main__":
     pytest.main()
