@@ -20,18 +20,24 @@ def max_subarray_sum(nums: list[int]) -> int:
         int: The maximum sum of any contiguous subarray.
     """
 
-    max_current = max_global = nums[0]
-    
-    for num in nums:
-        max_current = max(num, max_current + num)
-        if max_current < max_global:
-            max_global = max_current
-            
-    return max_global
+    try:
+        max_current = max_global = nums[0]
+        
+        
+        for num in nums[1:]:
+            try:
+                max_current = max(num, max_current + num)
+                if max_global < max_current:
+                    max_global = max_current
+            except TypeError:
+                print("Unexpected input. Make sure input is a list of integers.")
+        return max_global
+    except IndexError:
+        print("Unexpected number of elements. Make sure input is a non-empty list of integers.")
 
 # Example usage:
 def main():
-    nums = [-2,1,-3,4,-1,2,1,-5,4]
+    nums = []
     result = max_subarray_sum(nums)
     print(f"Maximum subarray sum: {result}")
 
